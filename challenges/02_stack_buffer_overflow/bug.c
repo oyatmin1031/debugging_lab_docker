@@ -63,9 +63,10 @@ static int tri_index(int i, int j) {
 
 /* 파스칼의 삼각형을 tri[] 에 채운다. */
 static void build_pascal(int *tri, int rows) {
-    for (int i = 0; i <= rows; i++) {
+    for (int i = 0; i < rows; i++) {
         for (int j = 0; j <= i; j++) {
             int idx = tri_index(i, j);
+            fprintf(stderr, "write i=%d j=%d idx=%d SIZE=%d\n", i, j, idx, SIZE);
             if (j == 0 || j == i) {
                 tri[idx] = 1;                         /* 양 끝은 1 */
             } else {
@@ -84,7 +85,7 @@ static long row_sum(const int *tri, int i) {
 }
 
 static void print_row(const int *tri, int i) {
-    printf("row %2d:", i);
+    printf("row %2d:", i);  
     for (int j = 0; j <= i; j++) printf(" %d", tri[tri_index(i, j)]);
     printf("   (sum=%ld)\n", row_sum(tri, i));
 }
@@ -96,6 +97,7 @@ int main(void) {
 
     for (int i = 0; i < ROWS; i++) print_row(tri, i);
 
+    
     printf("SIZE = %d\n", SIZE);
 
     /* [Thinking Point]
