@@ -1,6 +1,6 @@
 /*
  * Challenge 04 — Double Free (심화: 두 인덱스가 같은 객체를 가리키는 별칭)
- *
+ * 
  * [시나리오]
  *   직원 레코드(Rec)를 힙에 만들고, "ID 인덱스"(by_id)와 "이름 순 인덱스"(by_name)
  *   두 배열로 관리한다. 두 인덱스는 정렬만 다를 뿐, 결국 "같은 Rec 객체들"을 가리킨다
@@ -104,9 +104,9 @@ static void directory_free(Directory *d) {
         free(d->by_id[i]->name);
         free(d->by_id[i]);                 
     }
-    for (int i = 0; i < d->count; i++) {
-        free(d->by_name[i]);               
-    }
+    // for (int i = 0; i < d->count; i++) {
+    //     free(d->by_name[i]);               
+    // }
     d->count = 0;
 }
 
