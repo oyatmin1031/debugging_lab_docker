@@ -51,7 +51,7 @@ run: $(BUILD)/$(NAME)
 
 # make gdb NAME=01_use_after_free
 gdb: $(BUILD)/$(NAME)
-	gdb ./$(BUILD)/$(NAME)
+	pwndbg ./$(BUILD)/$(NAME)
 
 check: all
 	@bash scripts/check.sh
